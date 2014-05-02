@@ -48,7 +48,7 @@ class Command(BaseCommand):
             # 3. Store the id
             entry.trello_card_id = card["id"]
             entry.save()
-            print "Exported {0} onto Card {1}".format(entry.email.encode("utf-8"), entry.trello_card_id)
+            print("Exported {0} onto Card {1}".format(entry.email.encode("utf-8"), entry.trello_card_id))
 
     def export_answers(self):
         questions = SurveyQuestion.objects.filter(trello_list_id="")
@@ -66,7 +66,7 @@ class Command(BaseCommand):
                 card = self.api.create_card(title, description, answer.question.trello_list_id)
                 answer.trello_card_id = card["id"]
                 answer.save()
-                print "Exported Answer {0} on Card {1}".format(answer.pk, answer.trello_card_id)
+                print("Exported Answer {0} on Card {1}".format(answer.pk, answer.trello_card_id))
 
     def handle(self, *args, **options):
         self.site = Site.objects.get_current()

@@ -25,9 +25,9 @@ class Command(BaseCommand):
                 self.api.move_card(card["id"], self.api.contacted_list_id)
                 entry.initial_contact_sent = True
                 entry.save()
-                print "Sent to {0} ({1}) [Card #{2}]".format(card["name"], card["shortUrl"], card["idShort"])
+                print("Sent to {0} ({1}) [Card #{2}]".format(card["name"], card["shortUrl"], card["idShort"]))
             except WaitingListEntry.DoesNotExist:
-                print "{0} ({1}) has already been sent [Card #{2}]".format(card["name"], card["shortUrl"], card["idShort"])
+                print("{0} ({1}) has already been sent [Card #{2}]".format(card["name"], card["shortUrl"], card["idShort"]))
 
     def handle(self, *args, **options):
         self.site = Site.objects.get_current()
